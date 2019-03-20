@@ -4,9 +4,6 @@
 import base64
 import requests
 
-base_url = 'http://127.0.0.1:8090/TotalControl/v1/'
-user_passwd = 'sigma:F22DF82D'
-
 
 def get_token(url, user_password):
     byte1 = user_password.encode('utf-8')
@@ -22,10 +19,3 @@ def get_devices(url, token):
     payload = {'q': 'all', **token}
     resp = requests.get(url1, params=payload)
     return resp.json()['ids']
-
-
-if __name__ == '__main__':
-    a = get_token(base_url, user_passwd)
-    print(a)
-    b = get_devices(base_url, a)
-    print(b)
